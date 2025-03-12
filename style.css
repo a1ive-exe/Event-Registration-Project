@@ -1,0 +1,127 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+  
+  /* Header */
+  header {
+    text-align: center;
+    background-color: #007bff;
+    color: white;
+    padding: 20px;
+    width: 100%;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    margin: 0;
+    font-size: 2rem;
+  }
+  
+  p {
+    margin-top: 5px;
+  }
+  
+  /* Registration Container */
+  .registration-container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  h2 {
+    margin-bottom: 15px;
+  }
+  
+  /* Form Styles */
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    font-weight: bold;
+    text-align: left;
+    margin: 10px 0 5px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border 0.3s;
+  }
+  
+  input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  
+  /* Button */
+  button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+  
+  /* Loading State */
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  /* Success Message */
+  #successMessage {
+    margin-top: 15px;
+    color: green;
+    font-weight: bold;
+    display: none;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  /* Error Message */
+  #error-message {
+    color: red;
+    margin-top: 10px;
+    font-weight: bold;
+    display: none;
+  }
+  
+  /* Fade-in Animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
