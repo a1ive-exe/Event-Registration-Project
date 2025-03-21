@@ -5,6 +5,7 @@ document.getElementById('registrationForm').addEventListener('submit', async (e)
     name: document.getElementById('name').value,
     email: document.getElementById('email').value,
     contact: document.getElementById('contact').value
+    
   };
 
   const response = await fetch('/register', {
