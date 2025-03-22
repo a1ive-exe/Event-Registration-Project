@@ -1,27 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-  <link rel="stylesheet" href="style.css">
-  <script defer src="script.js"></script> </head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Registration</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+
 <body>
-  <header>
-    <h1>Event Registration Page</h1>
-    <p>Register for the event quickly and easily!</p>
-  </header>
-  <main>
-    <section class="registration-container">
-      <h2>Register for the Event</h2>
-      <form id="registrationForm">
-        <label for="name">Name:</label>
-        <input type="text" id="name" placeholder="Enter your name" required>
+    <header>
+        <h1>Event Registration</h1>
+        <p>Please fill out the form below to register for the event.</p>
+    </header>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" placeholder="Enter your email" required>
+    <main>
+        <section class="registration-container">
+            <h2>Registration Form</h2>
+            <form id="registrationForm">
+                <fieldset>
+                    <legend>Personal Information</legend>
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                        <small class="error-message" id="name-error"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                        <small class="error-message" id="email-error"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone:</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number"
+                            required>
+                        <small class="error-message" id="phone-error"></small>
+                    </div>
+                </fieldset>
 
-        <label for="contact">Contact Number:</label>
-        <input type="tel" id="contact" placeholder="Enter your contact number" required> 
-        
-        <button type="submit">Register</button>
-      </form>
-      <p id="successMessage" style="display:none;">Registration successful!</p>
-    </section>
-  </main>
+                <fieldset>
+                    <legend>Event Details</legend>
+                    <div class="form-group">
+                        <label for="event">Select Event:</label>
+                        <select id="event" name="event" required>
+                            <option value="">--Please Select--</option>
+                            <option value="workshop">Workshop</option>
+                            <option value="conference">Conference</option>
+                            <option value="seminar">Seminar</option>
+                        </select>
+                        <small class="error-message" id="event-error"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Event Date:</label>
+                        <input type="date" id="date" name="date" required>
+                        <small class="error-message" id="date-error"></small>
+                    </div>
+                </fieldset>
+
+                <div class="form-group">
+                    <button type="submit">Register</button>
+                </div>
+                <div id="form-message" class="form-message"></div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Event Registration</p>
+    </footer>
 </body>
+
+</html>
