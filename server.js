@@ -14,8 +14,7 @@ const registrationValidationRules = [
     body('name').trim().notEmpty().withMessage('Name is required'),
     body('email').isEmail().withMessage('Invalid email address'),
     body('phone').trim().notEmpty().withMessage('Phone is required').isLength({ min: 10, max: 10 }).withMessage('Phone number must be 10 digits'),
-    body('event').trim().notEmpty().withMessage('Event selection is required'),
-    body('date').trim().notEmpty().withMessage('Date is required'), 
+    body('event').trim().notEmpty().withMessage('Event selection is required')
 ];
 
 app.post('/register', registrationValidationRules, (req, res) => {
@@ -24,8 +23,8 @@ app.post('/register', registrationValidationRules, (req, res) => {
         return res.status(400).json({ errors: errors.array() });
     }
 
-    const { name, email, phone, event, date } = req.body;
-    participants.push({ name, email, phone, event, date });
+    const { name, email, phone, event } = req.body;
+    participants.push({ name, email, phone, event });
     res.json({ message: 'Registration successful' });
 });
 
