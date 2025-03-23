@@ -4,7 +4,6 @@ const { body, validationResult } = require('express-validator');
 const app = express();
 const PORT = 3000;
 
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static(__dirname));
@@ -16,4 +15,22 @@ const registrationValidationRules = [
     body('email').isEmail().withMessage('Invalid email address'),
     body('phone').trim().notEmpty().withMessage('Phone is required').isLength({ min: 10, max: 10 }).withMessage('Phone number must be 10 digits'),
     body('event').trim().notEmpty().withMessage('Event selection is required'),
-    body('
+    body('date').trim().notEmpty().withMessage('Date is required'), 
+];
+
+app.post('/register', registrationValidationRules, (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
+    const { name, email, phone, event, date } = req.body;
+    participants.push({ name, email, phone, event, date });
+    res.json({ message: 'Registration successful' });
+});
+
+app.get('/registrants', (req, res) => {
+    res.json(participants);
+});
+
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
