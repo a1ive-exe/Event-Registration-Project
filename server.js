@@ -8,7 +8,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static(__dirname));
 
-let participants =;
+let participants = [];
 
 const registrationValidationRules = [
     body('name').trim().notEmpty().withMessage('Name is required'),
