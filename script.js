@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('registrationForm');
     const formMessage = document.getElementById('form-message');
 
-    // Validation functions
     function validateName(name) {
         return name.trim() !== '';
     }
@@ -13,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function validatePhone(phone) {
-        const regex = /^{10}$/; // Basic 10-digit check
+        const regex = /^{10}$/; 
         return regex.test(phone);
     }
 
@@ -25,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return date !== '';
     }
 
-    // Error display function
     function displayError(fieldId, message) {
         const errorElement = document.getElementById(fieldId + '-error');
         if (errorElement) {
@@ -33,17 +31,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Clear all errors
     function clearErrors() {
         const errorElements = document.querySelectorAll('.error-message');
         errorElements.forEach(error => error.textContent = '');
     }
 
-    // Handle form submission
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
         clearErrors();
-        formMessage.textContent = ''; // Clear any previous messages
+        formMessage.textContent = ''; 
 
         const formData = {
             name: form.name.value.trim(),
@@ -53,7 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
             date: form.date.value,
         };
 
-        // Perform validation
         let isValid = true;
 
         if (!validateName(formData.name)) {
@@ -87,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Send data to the server
+        //Send data to the server
         try {
             const response = await fetch('/register', {
                 method: 'POST',
