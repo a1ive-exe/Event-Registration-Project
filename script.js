@@ -12,16 +12,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function validatePhone(phone) {
-        const regex = /^{10}$/; 
+        const regex = /^\d{10}$/; 
         return regex.test(phone);
     }
 
     function validateEvent(event) {
         return event !== '';
-    }
-
-    function validateDate(date) {
-        return date !== '';
     }
 
     function displayError(fieldId, message) {
@@ -32,21 +28,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function clearErrors() {
-        const errorElements = document.querySelectorAll('.error-message');
-        errorElements.forEach(error => error.textContent = '');
+        document.querySelectorAll('.error-message').forEach(error => error.textContent = '');
     }
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
         clearErrors();
-        formMessage.textContent = ''; 
+        formMessage.textContent = '';
 
         const formData = {
             name: form.name.value.trim(),
             email: form.email.value.trim(),
             phone: form.phone.value.trim(),
-            event: form.event.value,
-            date: form.date.value,
+            event: form.event.value
         };
 
         let isValid = true;
@@ -71,24 +65,16 @@ document.addEventListener('DOMContentLoaded', () => {
             isValid = false;
         }
 
-        if (!validateDate(formData.date)) {
-            displayError('date', 'Please select a date');
-            isValid = false;
-        }
-
         if (!isValid) {
             formMessage.textContent = 'Please correct the errors in the form.';
             formMessage.classList.add('error');
             return;
         }
 
-        //Send data to the server
         try {
             const response = await fetch('/register', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)
             });
 
@@ -103,7 +89,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 formMessage.textContent = result.error || 'Registration failed';
                 formMessage.classList.add('error');
             }
-
         } catch (error) {
             console.error('Fetch error:', error);
             formMessage.textContent = 'An unexpected error occurred. Please try again.';
