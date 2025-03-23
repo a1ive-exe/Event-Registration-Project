@@ -4,15 +4,13 @@ const { body, validationResult } = require('express-validator');
 const app = express();
 const PORT = 3000;
 
-// Middleware
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static(__dirname));
 
-// In-memory data store (replace with a database in production)
 let participants =;
 
-// Validation rules
 const registrationValidationRules = [
     body('name').trim().notEmpty().withMessage('Name is required'),
     body('email').isEmail().withMessage('Invalid email address'),
